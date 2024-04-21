@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ImageService {
 
-
     private final ImageClient imageClient;
 
     public ImageService(ImageClient imageClient) {
@@ -21,7 +20,7 @@ public class ImageService {
 
         // This can be used for some additional options specific to OpenAI, but it is not portable abstraction unlike 'ImageOptions' above,
         // so it will need to be updated when switching AI models
-        //  OpenAiImageOptions openAiImageOptions = OpenAiImageOptions.builder()
+        //    OpenAiImageOptions openAiImageOptions = OpenAiImageOptions.builder()
         //    .withQuality("hd")
         //    .withN(1)
         //    .withHeight(1024)
