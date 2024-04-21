@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.vojtechruzicka</groupId>
     <artifactId>spring-ai-demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>spring-ai-demo</name>
     <description>Demo project for Spring AI integration</description>
     <properties>
