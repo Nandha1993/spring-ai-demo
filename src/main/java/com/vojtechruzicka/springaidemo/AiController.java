@@ -11,9 +11,11 @@ import java.io.IOException;
 @RestController
 public class AiController {
 
+    private final ChatService chatService;
     private final ImageService imageService;
 
-    public AiController(ImageService imageService) {
+    public AiController(ChatService chatService, ImageService imageService) {
+        this.chatService = chatService;
         this.imageService = imageService;
     }
 
@@ -21,8 +23,10 @@ public class AiController {
     public void generateImage(HttpServletResponse response, @RequestParam("prompt") String prompt) throws IOException {
         ImageResponse imageResponse = imageService.generateImage(prompt);
 
+        // Get URL of the generated image
         String imageUrl = imageResponse.getResult().getOutput().getUrl();
 
+        // Send redirect to the image URL
         response.sendRedirect(imageUrl);
     }
 
