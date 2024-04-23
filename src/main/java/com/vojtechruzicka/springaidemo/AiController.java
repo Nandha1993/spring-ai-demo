@@ -35,4 +35,9 @@ public class AiController {
         return chatService.queryAi(prompt);
     }
 
+
+    @GetMapping("city-guide")
+    public String cityGuide(@RequestParam("city") String city, @RequestParam("interest") String interest) {
+        return chatService.getCityGuide(city, interest);
+    }
 }
