@@ -30,4 +30,9 @@ public class AiController {
         response.sendRedirect(imageUrl);
     }
 
+    @GetMapping("ask-ai")
+    public String askAi(@RequestParam("prompt") String prompt){
+        return chatService.queryAi(prompt);
+    }
+
 }
