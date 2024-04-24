@@ -21,9 +21,15 @@ public class ChatService {
     }
 
     public String getCityGuide(String city, String interest) {
-        PromptTemplate promptTemplate = new PromptTemplate("I am a tourist visiting city of {city}. I am mostly interested in {interest}. Tell me tips on what to do there.");
+        var template = """
+                I am a tourist visiting the city of {city}.
+                I am mostly interested in {interest}.
+                Tell me tips on what to do there.""";
 
-        Prompt prompt = promptTemplate.create(Map.of("city", city, "interest", interest));
+        PromptTemplate promptTemplate = new PromptTemplate(template);
+
+        Map<String, Object> params = Map.of("city", city, "interest", interest);
+        Prompt prompt = promptTemplate.create(params);
 
         return chatClient.call(prompt).getResult().getOutput().getContent();
     }
