@@ -40,4 +40,15 @@ public class AiController {
     public String cityGuide(@RequestParam("city") String city, @RequestParam("interest") String interest) {
         return chatService.getCityGuide(city, interest);
     }
+
+    @GetMapping("generate-image")
+    public void processImage(HttpServletResponse response, @RequestParam("prompt") String prompt) throws IOException {
+        ImageResponse imageResponse = imageService.generateImage(prompt);
+
+        // Get URL of the generated image
+        String imageUrl = imageResponse.getResult().getOutput().getUrl();
+
+        // Send redirect to the image URL
+        response.sendRedirect(imageUrl);
+    }
 }
